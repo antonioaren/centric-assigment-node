@@ -1,12 +1,14 @@
-const CouponController = require('./src/controller')
-const utils = require('./src/utils')
 const Storage = require('./src/storage')
-
 const executeExercise1 = require('./exercises/exercise_1')
 const executeExercise2 = require('./exercises/exercise_2')
 const executeExercise3 = require('./exercises/exercise_3')
 const executeExercise4 = require('./exercises/exercise_4')
 
+/**
+ * @description
+ * This is the main file of the application.
+ * It is responsible for executing the exercises.
+ */
 
 const storageInstance = new Storage()
 
@@ -22,5 +24,4 @@ executeExercise3(storageInstance)
 // 4. Same values, but grouping by retailer
 executeExercise4(storageInstance)
 
-console.log(storageInstance.getDataSaved())
-//utils.writeJsonData(storageInstance.getAllJsonData())
+utils.writeJsonData(storageInstance.getAllJsonData())
