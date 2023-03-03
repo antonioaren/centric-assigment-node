@@ -1,7 +1,5 @@
 const CouponController = require('../src/controller')
 const utils = require('../src/utils')
-
-
 const coupons = utils.getCouponsData()
 const couponsControllerInstance = new CouponController()
 
