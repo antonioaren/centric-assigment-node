@@ -8,8 +8,6 @@ const executeExercise3 = require('./exercises/exercise_3')
 const executeExercise4 = require('./exercises/exercise_4')
 
 
-const coupons = utils.getCouponsData()
-const couponsControllerInstance = new CouponController()
 const storageInstance = new Storage()
 
 
@@ -24,4 +22,5 @@ executeExercise3(storageInstance)
 // 4. Same values, but grouping by retailer
 executeExercise4(storageInstance)
 
-console.log(storageInstance.getAllJsonData())
+
+utils.writeJsonData(storageInstance.getAllJsonData())
