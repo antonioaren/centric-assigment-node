@@ -9,14 +9,14 @@ const couponsControllerInstance = new CouponController()
 function executeExercise2 (storageInstance) {
     storageInstance.saveData(
         'Coupons percentages off with discount: ',
-        couponsControllerInstance.getCouponsWithDiscount(coupons, 'percent-off')
+        couponsControllerInstance.getNumberOfCouponsWithDiscount(coupons, 'percent-off')
     )
     
     storageInstance.saveData(
         'Coupons percentages off with discount min: ',
         couponsControllerInstance.getCouponsWithDiscountMin(coupons, 'percent-off')
     )
-    
+
     storageInstance.saveData(
         'Coupons percentages off with discount max: ',
         couponsControllerInstance.getCouponsWithDiscountMax(coupons, 'percent-off')

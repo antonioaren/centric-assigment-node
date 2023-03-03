@@ -8,9 +8,11 @@ const couponsControllerInstance = new CouponController()
 function executeExercise4(storageInstance) {
 
     const couponsByRetailer = coupons.reduce((acc, coupon) => {
+        // If this is the first time we see this retailer, create an array for it
         if (!acc[coupon.coupon_webshop_name]) {
             acc[coupon.coupon_webshop_name] = []
         }
+        // Add the coupon to the retailer's array
         acc[coupon.coupon_webshop_name].push(coupon)
         return acc
     }, {})
@@ -24,7 +26,7 @@ function executeExercise4(storageInstance) {
                 'percent-off'
             ),
             'Coupons percentages off with discount:':
-                couponsControllerInstance.getCouponsWithDiscount(
+                couponsControllerInstance.getNumberOfCouponsWithDiscount(
                     couponsByRetailer[retailer],
                     'percent-off'
                 ),
@@ -48,7 +50,7 @@ function executeExercise4(storageInstance) {
                 'dollar-off'
             ),
             'Coupons dollar off with discount:':
-                couponsControllerInstance.getCouponsWithDiscount(
+                couponsControllerInstance.getNumberOfCouponsWithDiscount(
                     couponsByRetailer[retailer],
                     'dollar-off'
                 ),

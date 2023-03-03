@@ -22,5 +22,5 @@ executeExercise3(storageInstance)
 // 4. Same values, but grouping by retailer
 executeExercise4(storageInstance)
 
-
-utils.writeJsonData(storageInstance.getAllJsonData())
+console.log(storageInstance.getDataSaved())
+//utils.writeJsonData(storageInstance.getAllJsonData())

@@ -9,7 +9,7 @@ const couponsControllerInstance = new CouponController()
 function executeExercise3(storageInstance) {
     storageInstance.saveData(
         'Coupons dollar off with discount: ',
-        couponsControllerInstance.getCouponsWithDiscount(coupons, 'dollar-off')
+        couponsControllerInstance.getNumberOfCouponsWithDiscount(coupons, 'dollar-off')
     )
 
     storageInstance.saveData(
