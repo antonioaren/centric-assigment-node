@@ -1,1 +1,53 @@
-{"Coupons percentages off: ":89,"Coupons buy one get one: ":2,"Coupons dollar off: ":11,"Coupons free gift: ":2,"Coupons free shipping: ":43,"Coupons percentages off with discount: ":89,"Coupons percentages off with discount min: ":8,"Coupons percentages off with discount max: ":80,"Coupons percentages off with discount average: ":39.39325842696629,"Coupons dollar off with discount: ":11,"Coupons dollar off with discount min: ":10,"Coupons dollar off with discount max: ":150,"Coupons dollar off with discount average: ":45.90909090909091,"Coupons by retailer: ":{"Macy's  & Promo Codes":{"Coupons percentages off:":71,"Coupons percentages off with discount:":71,"Coupons percentages off with discount min:":10,"Coupons percentages off with discount max:":80,"Coupons percentages off with discount average:":41.40845070422535,"Coupons dollar off:":8,"Coupons dollar off with discount:":8,"Coupons dollar off with discount min:":10,"Coupons dollar off with discount max:":50,"Coupons dollar off with discount average:":16.25},"Nordstrom  & Promo Codes":{"Coupons percentages off:":14,"Coupons percentages off with discount:":14,"Coupons percentages off with discount min:":10,"Coupons percentages off with discount max:":50,"Coupons percentages off with discount average:":34.5,"Coupons dollar off:":2,"Coupons dollar off with discount:":2,"Coupons dollar off with discount min:":75,"Coupons dollar off with discount max:":150,"Coupons dollar off with discount average:":112.5},"Nike Promo Codes &":{"Coupons percentages off:":4,"Coupons percentages off with discount:":4,"Coupons percentages off with discount min:":8,"Coupons percentages off with discount max:":40,"Coupons percentages off with discount average:":20.75,"Coupons dollar off:":1,"Coupons dollar off with discount:":1,"Coupons dollar off with discount min:":150,"Coupons dollar off with discount max:":150,"Coupons dollar off with discount average:":150}}}
+{
+    "Coupons percentages off: ": 89,
+    "Coupons buy one get one: ": 2,
+    "Coupons dollar off: ": 11,
+    "Coupons free gift: ": 2,
+    "Coupons free shipping: ": 43,
+    "Coupons percentages off with discount: ": 89,
+    "Coupons percentages off with discount min: ": 8,
+    "Coupons percentages off with discount max: ": 80,
+    "Coupons percentages off with discount average: ": 39.39325842696629,
+    "Coupons dollar off with discount: ": 11,
+    "Coupons dollar off with discount min: ": 10,
+    "Coupons dollar off with discount max: ": 150,
+    "Coupons dollar off with discount average: ": 45.90909090909091,
+    "Coupons by retailer: ": {
+        "Macy's  & Promo Codes": {
+            "Coupons percentages off:": 71,
+            "Coupons percentages off with discount:": 71,
+            "Coupons percentages off with discount min:": 10,
+            "Coupons percentages off with discount max:": 80,
+            "Coupons percentages off with discount average:": 41.40845070422535,
+            "Coupons dollar off:": 8,
+            "Coupons dollar off with discount:": 8,
+            "Coupons dollar off with discount min:": 10,
+            "Coupons dollar off with discount max:": 50,
+            "Coupons dollar off with discount average:": 16.25
+        },
+        "Nordstrom  & Promo Codes": {
+            "Coupons percentages off:": 14,
+            "Coupons percentages off with discount:": 14,
+            "Coupons percentages off with discount min:": 10,
+            "Coupons percentages off with discount max:": 50,
+            "Coupons percentages off with discount average:": 34.5,
+            "Coupons dollar off:": 2,
+            "Coupons dollar off with discount:": 2,
+            "Coupons dollar off with discount min:": 75,
+            "Coupons dollar off with discount max:": 150,
+            "Coupons dollar off with discount average:": 112.5
+        },
+        "Nike Promo Codes &": {
+            "Coupons percentages off:": 4,
+            "Coupons percentages off with discount:": 4,
+            "Coupons percentages off with discount min:": 8,
+            "Coupons percentages off with discount max:": 40,
+            "Coupons percentages off with discount average:": 20.75,
+            "Coupons dollar off:": 1,
+            "Coupons dollar off with discount:": 1,
+            "Coupons dollar off with discount min:": 150,
+            "Coupons dollar off with discount max:": 150,
+            "Coupons dollar off with discount average:": 150
+        }
+    }
+}
