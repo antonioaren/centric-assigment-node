@@ -11,8 +11,8 @@ class Storage {
         this.storage[key] = value;
     }
 
-    getAllDataParsed() {
-        return JSON.parse(this.storage);
+    getAllJsonData() {
+        return JSON.stringify(this.storage);
     }
 
 }
