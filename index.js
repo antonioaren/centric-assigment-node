@@ -1,107 +1,83 @@
-/* import express, { Response, Request } from "express";
-import dotenv from "dotenv";
-import routes from "./routes";
+const CouponController = require('./src/controller')
+const utils = require('./src/utils')
+const Storage = require('./src/storage')
+const executeExercise1 = require('./exercises/exercise_1')
 
-dotenv.config();
 
-const app = express();
-app.use(express.json());
+const coupons = utils.getCouponsData()
+const couponsControllerInstance = new CouponController()
+const storageInstance = new Storage()
 
-app.use("/api", routes);
 
-app.listen(process.env.PORT, () => {
-    console.log(`Connected to ${process.env.PORT}`);
-}); */
+executeExercise1(storageInstance)
 
-//require fs
 
-const fs = require('fs')
-
-const coupons_json = fs.readFileSync('./assets/coupons.json', 'utf8')
-const coupons_object = JSON.parse(coupons_json)
-const coupons = coupons_object.coupons
-
-//TODO
 // 1. How many coupons each coupon type has?
 
-console.log("Ejercicio 1")
-
-const couponsbyType = (type) => coupons.filter(
-    (coupon) => coupon.promotion_type === type
-).length
-
-
-console.log('Coupons percentages off: ', couponsbyType('percent-off'))
-console.log('Coupons buy one get one: ', couponsbyType('buy-one-get-one'))
-console.log('Coupons dollar off: ', couponsbyType('dollar-off'))
-console.log('Coupons free gift: ', couponsbyType('free-gift'))
-console.log('Coupons free shipping: ', couponsbyType('free-shipping'))
+/* storageInstance.saveData('Coupons percentages off: ', couponsControllerInstance.couponsbyType(coupons, 'percent-off'))
+storageInstance.saveData('Coupons buy one get one: ', couponsControllerInstance.couponsbyType(coupons, 'buy-one-get-one'))
+storageInstance.saveData('Coupons dollar off: ', couponsControllerInstance.couponsbyType(coupons, 'dollar-off'))
+storageInstance.saveData('Coupons free gift: ', couponsControllerInstance.couponsbyType(coupons, 'free-gift'))
+storageInstance.saveData('Coupons free shipping: ', couponsControllerInstance.couponsbyType(coupons, 'free-shipping')) */
 
 // 2. Number of coupons with discount, the minimum discount, maximum discount and
 // average discount for percent - off coupons
 
-console.log("Ejercicio 2")
-
-
-const getCouponsWithDiscount = (type) => coupons.filter((coupons) => coupons.promotion_type === type && coupons.value > 0).length
-const getCouponsWithDiscountMin = (type) => Math.min(...coupons.filter((coupons) => coupons.promotion_type === type && coupons.value > 0).map((coupons) => coupons.value))
-const getCouponsWithDiscountMax = (type) => Math.max(...coupons.filter((coupons) => coupons.promotion_type === type && coupons.value > 0).map((coupons) => coupons.value))
-const getCouponsWithDiscountAverage = (type) => coupons.filter((coupons) => coupons.promotion_type === type && coupons.value > 0).reduce((acc, coupons) => acc + coupons.value, 0) / coupons.filter((coupons) => coupons.promotion_type === type && coupons.value > 0).length
-
-console.log(
+storageInstance.saveData(
     'Coupons percentages off with discount: ',
-    getCouponsWithDiscount('percent-off')
+    couponsControllerInstance.getCouponsWithDiscount(coupons, 'percent-off')
 )
 
 
-console.log(
+storageInstance.saveData(
     'Coupons percentages off with discount min: ',
-    getCouponsWithDiscountMin('percent-off')
+    couponsControllerInstance.getCouponsWithDiscountMin(coupons, 'percent-off')
 )
 
 
-console.log(
+storageInstance.saveData(
     'Coupons percentages off with discount max: ',
-    getCouponsWithDiscountMax('percent-off')
+    couponsControllerInstance.getCouponsWithDiscountMax(coupons, 'percent-off')
 )
 
 
-console.log(
+storageInstance.saveData(
     'Coupons percentages off with discount average: ',
-    getCouponsWithDiscountAverage('percent-off')
+    couponsControllerInstance.getCouponsWithDiscountAverage(coupons, 'percent-off')
 )
 
 // 3. Number of coupons with discount, the minimum discount, maximum discount and
 //average discount for dollar - off coupons
 
 
-console.log(
+storageInstance.saveData(
     'Coupons dollar off with discount: ',
-    getCouponsWithDiscount('dollar-off')
+    couponsControllerInstance.getCouponsWithDiscount(coupons, 'dollar-off')
 )
 
 
-console.log(
+storageInstance.saveData(
     'Coupons dollar off with discount min: ',
-    getCouponsWithDiscountMin('dollar-off')
+    couponsControllerInstance.getCouponsWithDiscountMin(coupons, 'dollar-off')
 )
 
-console.log(
+storageInstance.saveData(
     'Coupons dollar off with discount max: ',
-    getCouponsWithDiscountMax('dollar-off')
+    couponsControllerInstance.getCouponsWithDiscountMax(coupons, 'dollar-off')
 )
 
-console.log(
+storageInstance.saveData(
     'Coupons dollar off with discount average: ',
-    getCouponsWithDiscountAverage('dollar-off')
+    couponsControllerInstance.getCouponsWithDiscountAverage(coupons, 'dollar-off')
 )
+
+/* console.log(storageInstance.getDataSaved()) */
+
 
 // 4. Same values, but grouping by retailer
 
-
-console.log("Ejercicio 4")
-
 const couponsByRetailer = coupons.reduce((acc, coupon) => {
+
     if (!acc[coupon.coupon_webshop_name]) {
         acc[coupon.coupon_webshop_name] = []
     }
@@ -109,76 +85,23 @@ const couponsByRetailer = coupons.reduce((acc, coupon) => {
     return acc
 }, {})
 
-console.log('Coupons by retailer: ', couponsByRetailer)
 
-const couponsByRetailerPercentagesOff = Object.keys(couponsByRetailer).reduce(
-    (acc, retailer) => {
-        acc[retailer] = couponsByRetailer[retailer].filter(
-            (coupon) => coupon.promotion_type === 'percent-off'
-        ).length
-        return acc
+const retailers = Object.keys(couponsByRetailer)
+
+const couponsByRetailerCalculation = retailers.reduce((acc, retailer) => {
+    acc[retailer] = {
+        "Coupons percentages off:": couponsControllerInstance.couponsbyType(couponsByRetailer[retailer], 'percent-off'),
+        "Coupons percentages off with discount:": couponsControllerInstance.getCouponsWithDiscount(couponsByRetailer[retailer], 'percent-off'),
+        "Coupons percentages off with discount min:": couponsControllerInstance.getCouponsWithDiscountMin(couponsByRetailer[retailer], 'percent-off'),
+        "Coupons percentages off with discount max:": couponsControllerInstance.getCouponsWithDiscountMax(couponsByRetailer[retailer], 'percent-off'),
+        "Coupons percentages off with discount average:": couponsControllerInstance.getCouponsWithDiscountAverage(couponsByRetailer[retailer], 'percent-off'),
+        "Coupons dollar off:": couponsControllerInstance.couponsbyType(couponsByRetailer[retailer], 'dollar-off'),
+        "Coupons dollar off with discount:": couponsControllerInstance.getCouponsWithDiscount(couponsByRetailer[retailer], 'dollar-off'),
+        "Coupons dollar off with discount min:": couponsControllerInstance.getCouponsWithDiscountMin(couponsByRetailer[retailer], 'dollar-off'),
+        "Coupons dollar off with discount max:": couponsControllerInstance.getCouponsWithDiscountMax(couponsByRetailer[retailer], 'dollar-off'),
+        "Coupons dollar off with discount average:": couponsControllerInstance.getCouponsWithDiscountAverage(couponsByRetailer[retailer], 'dollar-off'),
     }
-)
-
-console.log(
-    'Coupons percentages off by retailer: ',
-    couponsByRetailerPercentagesOff
-)
-
-const couponsByRetailerPercentagesOffWithDiscount = Object.keys(couponsByRetailer).reduce(
-    (acc, retailer) => {
-        acc[retailer] = couponsByRetailer[retailer].filter(
-            (coupon) => coupon.promotion_type === 'percent-off' && coupon.value > 0
-        ).length
-        return acc
-    })
-
-console.log('Coupons percentages off with discount by retailer: ', couponsByRetailerPercentagesOffWithDiscount)
-
-const couponsByRetailerPercentagesOffWithDiscountMin = Object.keys(couponsByRetailer).reduce(
-    (acc, retailer) => {
-        acc[retailer] = Math.min(
-            ...couponsByRetailer[retailer]
-                .filter(
-                    (coupon) => coupon.promotion_type === 'percent-off' && coupon.value > 0
-                )
-                .map((coupon) => coupon.value)
-        )
-        return acc
-    });
-
-
-console.log('Coupons percentages off with discount min by retailer: ', couponsByRetailerPercentagesOffWithDiscountMin)
-
-const couponsByRetailerPercentagesOffWithDiscountMax = Object.keys(
-    couponsByRetailer
-).reduce((acc, retailer) => {
-    acc[retailer] = Math.max(
-        ...couponsByRetailer[retailer]
-            .filter(
-                (coupon) => coupon.promotion_type === 'percent-off' && coupon.value > 0
-            )
-            .map((coupon) => coupon.value)
-    )
     return acc
-});
+}, {})
 
-console.log('Coupons percentages off with discount max by retailer: ', couponsByRetailerPercentagesOffWithDiscountMax)
-
-
-const couponsByRetailerPercentagesOffWithDiscountAverage = Object.keys(
-    couponsByRetailer
-).reduce((acc, retailer) => {
-    acc[retailer] = couponsByRetailer[retailer]
-        .filter(
-            (coupon) => coupon.promotion_type === 'percent-off' && coupon.value > 0
-        )
-        .reduce((acc, coupon) => acc + coupon.value, 0) /
-        couponsByRetailer[retailer].filter(
-            (coupon) => coupon.promotion_type === 'percent-off' && coupon.value > 0
-        ).length
-    return acc
-});
-
-console.log('Coupons percentages off with discount average by retailer: ', couponsByRetailerPercentagesOffWithDiscountAverage)
-
+storageInstance.saveData('Coupons by retailer: ', couponsByRetailerCalculation)
