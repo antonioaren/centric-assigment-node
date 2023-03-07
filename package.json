@@ -7,7 +7,7 @@
 		"dev": "nodemon index.js",
 		"prod": "node index.js",
 		"test": "jest --config ./jest.config.json",
-		"test:watch": "npm run test -- --watch"
+		"test:watch": "npm run test --watch"
 	},
 	"author": "Pedro Arenas",
 	"license": "ISC",
