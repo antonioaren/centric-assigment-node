@@ -6,8 +6,8 @@ This is a simple Node.js application. The application read a coupons file and op
 
 ## Requirements
 
-- Node.js 8.9.4
-- NPM 5.6.0
+- Node.js 10.23.0
+- NPM 6.14.8
 
 ## Installation
 
